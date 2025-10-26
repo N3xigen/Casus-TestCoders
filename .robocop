@@ -1,0 +1,2 @@
+--configure line-too-long:line_length:200
+--exclude missing-trailing-blank-line

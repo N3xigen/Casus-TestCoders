@@ -1,8 +1,4 @@
-# Robot Framework core
+# Robot Framework core voor TestRPG Casus
 robotframework==7.1.1
-
-# Browser testing voor Frontend tests
 robotframework-browser==18.10.0
-
-# REST API testing voor REST service tests
 robotframework-requests==0.9.7
