@@ -1,0 +1,68 @@
+# Robot Framework output files
+log.html
+report.html
+output.xml
+selenium-screenshot-*.png
+**/results/
+**/logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE specifieke bestanden
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Browser library specifiek
+browser/
+node_modules/
+package-lock.json
+
+# Test resultaten en screenshots
+screenshots/
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Tijdelijke bestanden
+*.tmp
+*.bak
+*.cache
+.pytest_cache/
+
+# OS specifiek
+Thumbs.db
+.DS_Store
