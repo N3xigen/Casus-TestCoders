@@ -2,6 +2,7 @@
 log.html
 report.html
 output.xml
+playwright-log.txt
 selenium-screenshot-*.png
 **/results/
 **/logs/
@@ -50,12 +51,17 @@ browser/
 node_modules/
 package-lock.json
 
-# Test resultaten en screenshots
+# Test resultaten en screenshots (maar niet Testplan afbeeldingen)
 screenshots/
 *.png
 *.jpg
 *.jpeg
 *.gif
+
+# Testplan afbeeldingen WEL meenemen
+!Testplan/afbeeldingen/*.png
+!Testplan/afbeeldingen/*.jpg
+!Testplan/afbeeldingen/*.jpeg
 
 # Tijdelijke bestanden
 *.tmp

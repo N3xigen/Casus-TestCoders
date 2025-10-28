@@ -89,21 +89,21 @@ Voor elke taak (Level 1-5):
 
 ## 3. Toegepaste TMAP Testtechnieken
 
-### 3.1 Decision Table Testing
+### 3.1 Beslissingstabeltesten
 Gebruikt voor character creation validatie met combinaties van:
 - Naam lengte (leeg / <3 / ≥3 karakters)
 - Build selectie (geselecteerd)
 
-### 3.2 Boundary Value Analysis (BVA)
+### 3.2 Grenswaarde Analyse
 - Character naam: 0, 2, 3, 15, 16+ karakters
 - Click taak: 4e vs 5e klik voor level up
 - Email validatie: positie van @ (begin/midden/einde)
 
-### 3.3 Equivalence Partitioning (EP)
+### 3.3 Equivalentieklasses
 **Character naam:**
 - Ongeldige klasse: leeg, <3 karakters
 - Geldige klasse: 3-15 karakters
-- Grenswaarde klasse: >15 karakters (UI break)
+- Grenswaarde klasse: >15 karakters
 
 **Email validatie:**
 - Ongeldige: geen @, geen suffix, @ verkeerd gepositioneerd
