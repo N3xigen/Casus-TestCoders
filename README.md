@@ -9,14 +9,14 @@
 ---
 
 ### Scherm 1: Intro Scherm
-![Intro Scherm](scherm_1.png)
+![Intro Scherm](afbeeldingen/scherm_1.png)
 
 - Welkomstbericht met "Click here to play" knop
 
 ---
 
 ### Scherm 2: Character Creation
-![Character Creation](scherm_2.png)
+![Character Creation](afbeeldingen/scherm_2.png)
 
 - Character naam invoer (minimaal 3 karakters)
 - Build selectie dropdown (Thief, Mage, etc.)
@@ -25,7 +25,7 @@
 ---
 
 ### Scherm 3: Main Gameplay
-![Main Gameplay](scherm_3.png)
+![Main Gameplay](afbeeldingen/scherm_3.png)
 
 **Vier taken voor level progression:**
 1. **Level 1 → 2**: Klik 5x op knop
@@ -36,7 +36,7 @@
 ---
 
 ### Scherm 4: Login
-![Login Scherm](scherm_4.png)
+![Login Scherm](afbeeldingen/scherm_4.png)
 
 - Email validatie (@ met tekst ervoor/erna + suffix)
 - Wachtwoord veld (mag niet leeg zijn)
@@ -124,11 +124,11 @@ Gameplay progression: Level 1 → 2 → 3 → 4 → 5
 ## 4. Testdekking Regressietest
 
 De geautomatiseerde regressietest (FE.robot) dekt de volgende onderdelen:
--  Navigatie & schermverificatie (TC001)
--  Login validatie met beslissingstabeltesten (TC002)
--  Character creation met negatieve en positieve flows (TC003)
--  Gameplay flow voor alle 5 levels met state transitions (TC004)
--  Reset functionaliteit via "Play Again"
+- ✅ Navigatie & schermverificatie (TC001)
+- ✅ Login validatie met beslissingstabeltesten (TC002)
+- ✅ Character creation met negatieve en positieve flows (TC003)
+- ✅ Gameplay flow voor alle 5 levels met state transitions (TC004)
+- ✅ Reset functionaliteit via "Play Again"
 
 **Bevindingen uit Exploratory Testing** (handmatig ontdekt, niet geautomatiseerd):
 - UI breaks bij character namen >15 karakters
@@ -141,7 +141,7 @@ Deze bevindingen zijn gedocumenteerd in sectie 5 (Bevindingen & Aanbevelingen).
 
 ## 5. Bevindingen & Aanbevelingen
 
-###  Kritiek - Security Risico's
+### 🔴 Kritiek - Security Risico's
 
 **Issue 1: Ongevalideerde Bestand Upload**
 - **Risico**: XSS aanvallen, malware uploads, server toegang
@@ -153,7 +153,7 @@ Deze bevindingen zijn gedocumenteerd in sectie 5 (Bevindingen & Aanbevelingen).
 
 ---
 
-###  Hoog - UI/UX Issues
+### 🟡 Hoog - UI/UX Issues
 
 **Issue 3: Character Naam Lengte**
 - **Probleem**: Geen maximale lengte → UI breekt bij >15 karakters
@@ -165,11 +165,11 @@ Deze bevindingen zijn gedocumenteerd in sectie 5 (Bevindingen & Aanbevelingen).
 
 ---
 
-###  Laag - Feature Gaps
+### 🟢 Laag - Feature Gaps
 
 **Issue 5: Login zonder Toegevoegde Waarde**
 - **Probleem**: Inloggen biedt geen functionaliteit
-- **Aanbeveling**: Voeg highscore/leaderboard toe OF verwijder login feature 
+- **Aanbeveling**: Voeg highscore/leaderboard toe OF verwijder login feature
 
 ---
 

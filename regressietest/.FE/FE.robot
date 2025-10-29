@@ -12,7 +12,7 @@ Test Teardown   FE Teardown
 TC001 - Website Laden En Verifieren
     [Documentation]    Test of de website correct is geladen
     [Tags]    Website-Laden-En-Verifieren
-    Controleer Of Tekst Op Pagina Staat    TestRPG is a simple 'game'
+    Controleer Of Tekst Op Pagina Staat    ${TEKST.HOMEPAGE_TITEL}
 
 TC002 - Inloggen Controleren
     [Documentation]
@@ -21,8 +21,8 @@ TC002 - Inloggen Controleren
     ...    Controleert of de juiste foutmeldingen worden weergegeven.
     [Tags]    Inloggen-Controleren
     Klik Op Element    ${SELECTORS.LOGIN_BUTTON}
-    Controleer Of Tekst Op Pagina Staat    Login to TestRPG
-    Inloggen Valideren    tester@test.com    test
+    Controleer Of Tekst Op Pagina Staat    ${TEKST.LOGIN_MODAL_TITEL}
+    Inloggen Valideren    ${LOGIN.email}    ${LOGIN.wachtwoord}
 
 TC003 - Character Aanmaken En Spel Starten
     [Documentation]
@@ -32,7 +32,7 @@ TC003 - Character Aanmaken En Spel Starten
 
     Klik Play In Het Hoofdmenu
     Klik Op Element    ${SELECTORS.START_BUTTON}
-    Controleer Of Tekst Op Pagina Staat    Name must be at least 3 characters
+    Controleer Of Tekst Op Pagina Staat    ${TEKST.CHARACTER_NAAM_FOUT}
 
     Maak Character, Start Spel En Controleer Status    keyboard
     Klik Op Element    ${SELECTORS.HOME_BUTTON}
@@ -54,5 +54,5 @@ TC004 - Character Controleren Per Level
     Character Level Procedure    5
 
     # Spel uitgespeeld, laatste controles uitvoeren
-    Controleer Of Tekst Op Pagina Staat    You've reached the highest level!
+    Controleer Of Tekst Op Pagina Staat    ${TEKST.MAX_LEVEL_BERICHT}
     Play Again Controleren Na Het Spelen

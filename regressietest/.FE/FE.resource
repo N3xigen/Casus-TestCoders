@@ -28,40 +28,40 @@ Inloggen Valideren
     [Documentation]    Voert een Beslissingtabeltest uit voor het inloggen
     [Arguments]    ${email}    ${wachtwoord}
 
-    # Vul niks in en druk meteen op login
+    # Vul niks in en druk meteen op login (verwacht: blijf op login pagina)
     Klik Op Element    ${SELECTORS.LOGIN_SUBMIT_BUTTON}
-    Controleer Of Tekst Op Pagina Staat    Login to TestRPG
+    Controleer Of Tekst Op Pagina Staat    ${TEKST.LOGIN_MODAL_TITEL}
 
-    # Vul email  in - @ vergeten we bewust
+    # Vul email in zonder @ (verwacht: blijf op login pagina)
     Fill Text    ${SELECTORS.EMAIL_INPUT}    tester
     Klik Op Element    ${SELECTORS.LOGIN_SUBMIT_BUTTON}
-    Controleer Of Tekst Op Pagina Staat    Login to TestRPG
+    Controleer Of Tekst Op Pagina Staat    ${TEKST.LOGIN_MODAL_TITEL}
 
-    # Vul email in - suffix vergeten we bewust
+    # Vul email in zonder suffix (verwacht: toon email validatie foutmelding)
     Fill Text    ${SELECTORS.EMAIL_INPUT}    tester@test
     Klik Op Element    ${SELECTORS.LOGIN_SUBMIT_BUTTON}
-    Controleer Of Tekst Op Pagina Staat    This should be an email address
+    Controleer Of Tekst Op Pagina Staat    ${TEKST.LOGIN_EMAIL_FOUT}
 
-    # Vul email en wachtwoord correct in - HAPPY FLOW
+    # Vul email en wachtwoord correct in (verwacht: succesvol inloggen)
     Fill Text    ${SELECTORS.EMAIL_INPUT}    ${email}
     Fill Text    ${SELECTORS.PASSWORD_INPUT}    ${wachtwoord}
     Klik Op Element    ${SELECTORS.LOGIN_SUBMIT_BUTTON}
     Controleer Of Element Zichtbaar Is    ${SELECTORS.LOGOUT_BUTTON}
 
-    # Log weer uit en kijk of login knop weer zichtbaar is
+    # Log uit en verifieer dat login knop weer zichtbaar is
     Klik Op Element    ${SELECTORS.LOGOUT_BUTTON}
     Controleer Of Element Zichtbaar Is    ${SELECTORS.LOGIN_BUTTON}
 
 Klik Play In Het Hoofdmenu
     [Documentation]    Drukt op de play knop in het hoofdmenu en verifieert dat de character aanmaak pagina wordt geladen
     Klik Op Element    ${SELECTORS.CLICK_TO_PLAY_BUTTON}
-    Controleer Of Tekst Op Pagina Staat    Choose a name and build
+    Controleer Of Tekst Op Pagina Staat    ${TEKST.CHARACTER_CREATION_TITEL}
 
 Play Again Controleren Na Het Spelen
     [Documentation]    Controleert of de 'Play again' knop correct werkt na het uitspelen van het spel
     Controleer Of Element Zichtbaar Is    ${SELECTORS.CLICK_TO_PLAY_AGAIN_BUTTON}
     Klik Op Element    ${SELECTORS.CLICK_TO_PLAY_AGAIN_BUTTON}
-    Controleer Of Tekst Op Pagina Staat    Choose a name and build
+    Controleer Of Tekst Op Pagina Staat    ${TEKST.CHARACTER_CREATION_TITEL}
     Controleer Of Tekst Op Pagina Staat    A level 1 thief
 
 # ============================================================================
@@ -84,10 +84,9 @@ Maak Character, Start Spel En Controleer Status
     END
 
     # Klik op Start en verifieer of de character goed is aangemaakt en het spel is gestart
-    ${build_lowercase}=    Evaluate    $PLAYER.build.lower()
     Klik Op Element    ${SELECTORS.START_BUTTON}
     Controleer Of Tekst Op Pagina Staat    ${PLAYER.naam}
-    Controleer Of Tekst Op Pagina Staat    A level 1 ${build_lowercase}
+    Controleer Of Tekst Op Pagina Staat    A level 1 ${PLAYER.build}
     Log    Spel gestart met character '${PLAYER.naam}' en build '${PLAYER.build}' (selectie: ${selecteer_wijze})
 
 Selecteer Build Via Dropdown
@@ -142,7 +141,6 @@ Character Level Procedure
     [Arguments]    ${verwacht_level}
 
     ${verwacht_level}=    Convert To String    ${verwacht_level}
-    ${build_lowercase}=    Evaluate    $PLAYER.build.lower()
 
     IF    '${verwacht_level}' == '1'
         Controleren Van Character Status    ${verwacht_level}
@@ -153,21 +151,21 @@ Character Level Procedure
 
     ELSE IF    '${verwacht_level}' == '3'
         Upload Bestand    ${TESTPLAN_AFBEELDING}
-        Controleer Of Tekst Op Pagina Staat    File selected, level up!
+        Controleer Of Tekst Op Pagina Staat    ${TEKST.BESTAND_UPLOAD_SUCCES}
         Controleren Van Character Status    ${verwacht_level}
 
     ELSE IF    '${verwacht_level}' == '4'
         Fill Text    ${SELECTORS.LOREM_IPSUM_INPUT}    Lorem ipsum
-        Run Keyword And Expect Error    *    Controleer Of Tekst Op Pagina Staat    Dolar sit amet!    100ms
+        Run Keyword And Expect Error    *    Controleer Of Tekst Op Pagina Staat    ${TEKST.TEXT_INPUT_SUCCES}    100ms
         Fill Text    ${SELECTORS.LOREM_IPSUM_INPUT}    Lorem Ipsum
-        Controleer Of Tekst Op Pagina Staat    Dolar sit amet!
+        Controleer Of Tekst Op Pagina Staat    ${TEKST.TEXT_INPUT_SUCCES}
         Controleren Van Character Status    ${verwacht_level}
 
     ELSE IF    '${verwacht_level}' == '5'
         Beweeg Slider Naar Percentage    90
-        Run Keyword And Expect Error    *    Controleer Of Tekst Op Pagina Staat    Slid to the next level!    100ms
+        Run Keyword And Expect Error    *    Controleer Of Tekst Op Pagina Staat    ${TEKST.SLIDER_SUCCES}    100ms
         Beweeg Slider Naar Percentage    100
-        Controleer Of Tekst Op Pagina Staat    Slid to the next level!
+        Controleer Of Tekst Op Pagina Staat    ${TEKST.SLIDER_SUCCES}
         Controleren Van Character Status    ${verwacht_level}
 
     ELSE
@@ -182,37 +180,37 @@ Level Up Via 5x Klikken
 
     # Berekent ${huidig_level} en bereidt de variabelen voor
     ${verwacht_level}=    Convert To String    ${verwacht_level}
-    ${build_lowercase}=    Evaluate    $PLAYER.build.lower()
+    ${build}=    Evaluate    $PLAYER.build.lower()
     ${huidig_level}=    Evaluate    int($verwacht_level) - 1
     ${huidig_level}=    Convert To String    ${huidig_level}
 
     # Controleer startlevel en build, klik vier keer, controleer, klik voor de vijfde keer
-    Controleer Of Tekst Op Pagina Staat    A level ${huidig_level} ${build_lowercase}
+    Controleer Of Tekst Op Pagina Staat    A level ${huidig_level} ${build}
     Klik Op Element    ${SELECTORS.CLICK_TO_LEVEL_BUTTON}    4
-    Controleer Of Tekst Op Pagina Staat    A level ${huidig_level} ${build_lowercase}
+    Controleer Of Tekst Op Pagina Staat    A level ${huidig_level} ${build}
     Klik Op Element    ${SELECTORS.CLICK_TO_LEVEL_BUTTON}
 
     # Controleer of het verwachtte level is bereikt en check ook meteen of de afbeelding matcht
-    Controleer Of Tekst Op Pagina Staat    Great job! You levelled up
-    Controleer Of Tekst Op Pagina Staat    A level ${verwacht_level} ${build_lowercase}
+    Controleer Of Tekst Op Pagina Staat    ${TEKST.LEVEL_UP_BERICHT}
+    Controleer Of Tekst Op Pagina Staat    A level ${verwacht_level} ${build}
     Controleer Character Afbeelding    ${verwacht_level}
     Log    Character geleveld van level ${huidig_level} naar ${verwacht_level} na 5x klikken
 
 Controleren Van Character Status
     [Documentation]    Controleert de naam, build en afbeelding van de character op basis van het level.
     [Arguments]    ${verwacht_level}
-    ${build_lowercase}=    Evaluate    $PLAYER.build.lower()
+    ${build}=    Evaluate    $PLAYER.build.lower()
     Controleer Of Tekst Op Pagina Staat    ${PLAYER.naam}
-    Controleer Of Tekst Op Pagina Staat    A level ${verwacht_level} ${build_lowercase}
+    Controleer Of Tekst Op Pagina Staat    A level ${verwacht_level} ${build}
     Controleer Character Afbeelding    ${verwacht_level}
-    Log    Level ${verwacht_level} gecontroleerd voor ${PLAYER.naam} (${build_lowercase})
+    Log    Level ${verwacht_level} gecontroleerd voor ${PLAYER.naam} (${build})
 
 Controleer Character Afbeelding
     [Documentation]    Controleert of de character de juiste zichtbare afbeelding heeft op basis van het level.
     [Arguments]    ${verwacht_level}
 
     # Kijkt of we op de goede pagina zitten
-    Controleer Of Tekst Op Pagina Staat    Complete the tasks below and level up your character
+    Controleer Of Tekst Op Pagina Staat    ${TEKST.GAMEPLAY_INSTRUCTIE}
 
     # Check of level geldig is
     ${verwacht_level}=    Convert To String    ${verwacht_level}

@@ -67,7 +67,7 @@ Beweeg Slider Naar Percentage
     # Valideer percentage tussen 0 en 100
     ${percentage_int}=    Convert To Integer    ${percentage}
     IF    ${percentage_int} < 0 or ${percentage_int} > 100
-        Fail    Percentage moet tussen 0 en 100 liggen, maar kreeg: ${percentage}
+        Fail    Percentage moet tussen 0 en 100 liggen, ontvangen waarde: ${percentage}
     END
 
     # Focus op de slider
@@ -77,7 +77,7 @@ Beweeg Slider Naar Percentage
         Keyboard Key    press    ArrowRight
     END
 
-    Log    Slider bewogen naar ${percentage}%
+    Log    Slider succesvol bewogen naar ${percentage}%
 
 Controleer Of Tekst Op Pagina Staat
     [Documentation]    Controleert of een specifieke tekst zichtbaar is op de huidige pagina (inclusief modals)
