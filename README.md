@@ -9,7 +9,7 @@
 
 **TestRPG** is een web-gebaseerde game waarbij spelers een karakter creëren en door het voltooien van taken levels behalen (max level 5).
 
-🌐 **URL**: https://test-rpg.vercel.app/play
+🌐 **URL**: https://test-rpg.vercel.app
 
 ---
 
@@ -141,9 +141,6 @@ Deze bevindingen zijn gedocumenteerd in sectie 5 (Bevindingen & Aanbevelingen).
 - **Probleem**: Geen maximale lengte → UI breekt bij >15 karakters
 - **Aanbeveling**: Max 15 karakters OF automatische line breaks
 
-**Issue 4: Misleidende Tekst**
-- **Probleem**: "Choose a build and level up your character!" blijft zichtbaar in gameplay
-- **Aanbeveling**: Wijzig naar "Complete tasks to level up!" in gameplay scherm
 
 ---
 
@@ -157,8 +154,5 @@ Deze bevindingen zijn gedocumenteerd in sectie 5 (Bevindingen & Aanbevelingen).
 
 **Framework**: Robot Framework + Browser Library  
 **Datum**: 26 oktober 2025  
-**Auteur**: Tristan Weber
-
+Tristan Weber
 ---
-
-> 💡 **Tip**: Run de tests met `robot --outputdir browser regressietest/.FE/FE.robot`
