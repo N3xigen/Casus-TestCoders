@@ -1,21 +1,26 @@
 # Testplan - TestRPG Regressietest
 
+> **Geautomatiseerde frontend regressietest voor TestRPG web applicatie**  
+> Framework: Robot Framework + Browser Library | Datum: 26 oktober 2025
+
+---
+
 ## 1. Applicatie Overzicht
 
 **TestRPG** is een web-gebaseerde game waarbij spelers een karakter creëren en door het voltooien van taken levels behalen (max level 5).
 
-**URL**: https://test-rpg.vercel.app/play
+🌐 **URL**: https://test-rpg.vercel.app/play
 
 ---
 
-### Scherm 1: Intro Scherm
+### 📱 Scherm 1: Intro Scherm
 ![Intro Scherm](afbeeldingen/scherm_1.png)
 
 - Welkomstbericht met "Click here to play" knop
 
 ---
 
-### Scherm 2: Character Creation
+### 👤 Scherm 2: Character Creation
 ![Character Creation](afbeeldingen/scherm_2.png)
 
 - Character naam invoer (minimaal 3 karakters)
@@ -24,7 +29,7 @@
 
 ---
 
-### Scherm 3: Main Gameplay
+### 🎮 Scherm 3: Main Gameplay
 ![Main Gameplay](afbeeldingen/scherm_3.png)
 
 **Vier taken voor level progression:**
@@ -35,7 +40,7 @@
 
 ---
 
-### Scherm 4: Login
+### 🔐 Scherm 4: Login
 ![Login Scherm](afbeeldingen/scherm_4.png)
 
 - Email validatie (@ met tekst ervoor/erna + suffix)
@@ -46,18 +51,18 @@
 
 ## 2. Testaanpak
 
-### 2.1 Navigatie & Schermverificatie
+### 🧭 2.1 Navigatie & Schermverificatie
 - Verifieer intro scherm via welkomst tekst
 - Test navigatie tussen schermen
 - Controleer aanwezigheid karakteristieke teksten per scherm
 
 ### 2.2 Character Creation Validatie
 **Negatieve tests:**
-- Leeg naam veld → verwacht foutmelding
-- Naam < 3 karakters → verwacht foutmelding
+- ❌ Leeg naam veld → verwacht foutmelding
+- ❌ Naam < 3 karakters → verwacht foutmelding
 
 **Positieve test:**
-- Geldige naam (≥3 karakters) + build selectie → verwacht navigatie naar gameplay
+- ✅ Geldige naam (≥3 karakters) + build selectie → verwacht navigatie naar gameplay
 
 ### 2.3 Gameplay Flow Testing
 Voor elke taak (Level 1-5):
@@ -74,13 +79,13 @@ Voor elke taak (Level 1-5):
 
 ### 2.4 Login Testing
 **Negatieve tests:**
-- Email zonder @ → verwacht foutmelding
-- Email zonder suffix → verwacht foutmelding
-- @ aan begin/einde → verwacht foutmelding
-- Leeg wachtwoord → verwacht foutmelding
+- ❌ Email zonder @ → verwacht foutmelding
+- ❌ Email zonder suffix → verwacht foutmelding
+- ❌ @ aan begin/einde → verwacht foutmelding
+- ❌ Leeg wachtwoord → verwacht foutmelding
 
 **Positieve test:**
-- Geldig email + wachtwoord → verifieer via aanwezigheid "Logout" knop
+- ✅ Geldig email + wachtwoord → verifieer via aanwezigheid "Logout" knop
 
 ### 2.5 Reset Functionaliteit
 - Test "Play Again" → verwacht return naar character creation
@@ -89,7 +94,7 @@ Voor elke taak (Level 1-5):
 
 ## 3. Toegepaste TMAP Testtechnieken
 
-### 3.1 Beslissingstabeltesten
+### 📋 3.1 Beslissingstabeltesten
 Gebruikt voor character creation validatie met combinaties van:
 - Naam lengte (leeg / <3 / ≥3 karakters)
 - Build selectie (geselecteerd)
@@ -99,7 +104,7 @@ Gebruikt voor character creation validatie met combinaties van:
 - Click taak: 4e vs 5e klik voor level up
 - Email validatie: positie van @ (begin/midden/einde)
 
-### 3.3 Equivalentieklasses
+### 📊 3.3 Equivalentieklasses
 **Character naam:**
 - Ongeldige klasse: leeg, <3 karakters
 - Geldige klasse: 3-15 karakters
@@ -109,12 +114,12 @@ Gebruikt voor character creation validatie met combinaties van:
 - Ongeldige: geen @, geen suffix, @ verkeerd gepositioneerd
 - Geldige: correct formaat
 
-### 3.4 State Transition Testing
+### 🔄 3.4 State Transition Testing
 Gameplay progression: Level 1 → 2 → 3 → 4 → 5
 - Verifieer state veranderingen (avatar, tekst, stats)
 - Test reset via "Play Again"
 
-### 3.5 Exploratory Testing
+### 🔍 3.5 Exploratory Testing
 - Lange character namen (>15 karakters) → UI break ontdekt
 - Bestand upload zonder restricties → security risico geïdentificeerd
 - Wachtwoord met 1 karakter → zwakke validatie ontdekt
@@ -123,7 +128,7 @@ Gameplay progression: Level 1 → 2 → 3 → 4 → 5
 
 ## 4. Testdekking Regressietest
 
-De geautomatiseerde regressietest (FE.robot) dekt de volgende onderdelen:
+**De geautomatiseerde regressietest** (`regressietest/.FE/FE.robot`) **dekt de volgende onderdelen:**
 - ✅ Navigatie & schermverificatie (TC001)
 - ✅ Login validatie met beslissingstabeltesten (TC002)
 - ✅ Character creation met negatieve en positieve flows (TC003)
@@ -131,9 +136,9 @@ De geautomatiseerde regressietest (FE.robot) dekt de volgende onderdelen:
 - ✅ Reset functionaliteit via "Play Again"
 
 **Bevindingen uit Exploratory Testing** (handmatig ontdekt, niet geautomatiseerd):
-- UI breaks bij character namen >15 karakters
-- Zwakke wachtwoord validatie (1 karakter is toegestaan)
-- Ongevalideerde bestand upload (security risico)
+- 🔎 UI breaks bij character namen >15 karakters
+- 🔎 Zwakke wachtwoord validatie (1 karakter is toegestaan)
+- 🔎 Ongevalideerde bestand upload (security risico)
 
 Deze bevindingen zijn gedocumenteerd in sectie 5 (Bevindingen & Aanbevelingen).
 
@@ -176,3 +181,7 @@ Deze bevindingen zijn gedocumenteerd in sectie 5 (Bevindingen & Aanbevelingen).
 **Framework**: Robot Framework + Browser Library  
 **Datum**: 26 oktober 2025  
 **Auteur**: Tristan Weber
+
+---
+
+> 💡 **Tip**: Run de tests met `robot --outputdir browser regressietest/.FE/FE.robot`
