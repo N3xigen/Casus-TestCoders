@@ -35,7 +35,7 @@
 **Vier taken voor level progression:**
 1. **Level 1 → 2**: Klik 5x op knop
 2. **Level 2 → 3**: Upload bestand
-3. **Level 3 → 4**: Type "Lorem Ipsum"
+3. **Level 3 → 4**: Typ "Lorem Ipsum"
 4. **Level 4 → 5**: Beweeg slider naar rechts
 
 ---
@@ -51,12 +51,7 @@
 
 ## 2. Testaanpak
 
-### 🧭 2.1 Navigatie & Schermverificatie
-- Verifieer intro scherm via welkomst tekst
-- Test navigatie tussen schermen
-- Controleer aanwezigheid karakteristieke teksten per scherm
-
-### 2.2 Character Creation Validatie
+### 2.1 Character Creation Validatie
 **Negatieve tests:**
 - ❌ Leeg naam veld → verwacht foutmelding
 - ❌ Naam < 3 karakters → verwacht foutmelding
@@ -66,16 +61,13 @@
 
 ### 2.3 Gameplay Flow Testing
 Voor elke taak (Level 1-5):
-- Verifieer initiële state (level tekst, avatar, stats)
+- Verifieer initiële status (level tekst, avatar, stats)
 - Voer taak uit
 - Controleer success message
 - Verifieer level up (tekst, avatar, stats)
 
 **Edge cases bij text input:**
-- Incorrecte tekst ("Lorem Ipsumm")
-- Case sensitivity ("lorem ipsum")
-- Gedeeltelijke match ("Lorem")
-- Extra spaties/special characters
+- Incorrecte tekst ("Lorem ipsum")
 
 ### 2.4 Login Testing
 **Negatieve tests:**
@@ -99,27 +91,12 @@ Gebruikt voor character creation validatie met combinaties van:
 - Naam lengte (leeg / <3 / ≥3 karakters)
 - Build selectie (geselecteerd)
 
-### 3.2 Grenswaarde Analyse
-- Character naam: 0, 2, 3, 15, 16+ karakters
-- Click taak: 4e vs 5e klik voor level up
-- Email validatie: positie van @ (begin/midden/einde)
-
-### 📊 3.3 Equivalentieklasses
-**Character naam:**
-- Ongeldige klasse: leeg, <3 karakters
-- Geldige klasse: 3-15 karakters
-- Grenswaarde klasse: >15 karakters
-
-**Email validatie:**
-- Ongeldige: geen @, geen suffix, @ verkeerd gepositioneerd
-- Geldige: correct formaat
-
-### 🔄 3.4 State Transition Testing
+### 🔄 3.2 State Transition Testing
 Gameplay progression: Level 1 → 2 → 3 → 4 → 5
 - Verifieer state veranderingen (avatar, tekst, stats)
 - Test reset via "Play Again"
 
-### 🔍 3.5 Exploratory Testing
+### 🔍 3.3 Exploratory Testing
 - Lange character namen (>15 karakters) → UI break ontdekt
 - Bestand upload zonder restricties → security risico geïdentificeerd
 - Wachtwoord met 1 karakter → zwakke validatie ontdekt
