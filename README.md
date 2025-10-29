@@ -21,7 +21,7 @@
 ---
 
 ### 👤 Scherm 2: Character Creation
-![Character Creation](afbeeldingen/scherm_2.png)
+![Character Creation](afbeeldingen/scherm_3.png)
 
 - Character naam invoer (minimaal 3 karakters)
 - Build selectie dropdown (Thief, Mage, etc.)
@@ -30,7 +30,7 @@
 ---
 
 ### 🎮 Scherm 3: Main Gameplay
-![Main Gameplay](afbeeldingen/scherm_3.png)
+![Main Gameplay](afbeeldingen/scherm_4.png)
 
 **Vier taken voor level progression:**
 1. **Level 1 → 2**: Klik 5x op knop
@@ -41,7 +41,7 @@
 ---
 
 ### 🔐 Scherm 4: Login
-![Login Scherm](afbeeldingen/scherm_4.png)
+![Login Scherm](afbeeldingen/scherm_2.png)
 
 - Email validatie (@ met tekst ervoor/erna + suffix)
 - Wachtwoord veld (mag niet leeg zijn)
