@@ -62,6 +62,9 @@ screenshots/
 !Testplan/afbeeldingen/*.png
 !Testplan/afbeeldingen/*.jpg
 !Testplan/afbeeldingen/*.jpeg
+!afbeeldingen/*.png
+!afbeeldingen/*.jpg
+!afbeeldingen/*.jpeg
 
 # Tijdelijke bestanden
 *.tmp
