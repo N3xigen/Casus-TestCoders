@@ -1,3 +1,4 @@
 --configure line-too-long:line_length:200
 --configure too-many-calls-in-keyword:max_calls:20
+--configure too-many-arguments:max_args:10
 --exclude missing-trailing-blank-line

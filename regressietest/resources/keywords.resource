@@ -92,3 +92,23 @@ Controleer Of Element Zichtbaar Is
     [Arguments]    ${selector}    ${timeout}=5s
     Wait For Elements State    ${selector}    visible    timeout=${timeout}
     Log    Element '${selector}' is zichtbaar op de pagina
+
+# ============================================================================
+# REST API keywords
+# ============================================================================
+
+REST GET Request
+    [Documentation]
+    ...    Voert een GET request uit naar het opgegeven endpoint en geeft een response terug
+    [Arguments]    ${endpoint}    ${expected_status}=200
+    ${response}=    GET    ${endpoint}   expected_status=${expected_status}
+
+    RETURN    ${response}
+
+REST POST Request
+    [Documentation]
+    ...    Voert een POST request uit naar het opgegeven endpoint met body, en geeft een response terug
+    [Arguments]    ${endpoint}    ${json_body}    ${expected_status}=200
+    ${response}=    POST    ${endpoint}    json=${json_body}    expected_status=${expected_status}
+
+    RETURN    ${response}

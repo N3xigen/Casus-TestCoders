@@ -7,32 +7,35 @@ Documentation    Variabelen voor de TestRPG website
 ${URL}                  https://test-rpg.vercel.app                                         # De URL van de TestRPG website
 ${BROWSER}              chromium                                                            # Browser type: chromium, firefox, webkit, brave
 ${HEADLESS}             False                                                               # True voor headless mode, False voor zichtbare browser
-${BRAVE_APP}     /Applications/Brave Browser.app/Contents/MacOS/Brave Browser        # Pad naar Brave browser executable
-${TESTPLAN_AFBEELDING}    ${CURDIR}/../../Testplan/afbeeldingen/scherm_1.png                              # Pad naar testplan afbeeldingen folder
+${BRAVE_APP}            /Applications/Brave Browser.app/Contents/MacOS/Brave Browser        # Pad naar Brave browser executable
+${TESTPLAN_AFBEELDING}    ${CURDIR}/../../afbeeldingen/scherm_1.png                         # Pad naar testplan afbeeldingen folder
+
+# API variabelen
+${API_BASE_URL}         https://test-rpg.vercel.app/api                                     # Base URL voor API endpoints
 
 # Test character gegevens
 &{PLAYER}
-...    naam=Click Norris                                                                     # Test character naam
-...    build=Brigadier                                                                       # Test character build
+...    naam=Click Norris                                                                    # Test character naam
+...    build=Brigadier                                                                      # Test character build
 
 # Login credentials voor testen
 &{LOGIN}
-...    email=tester@test.com                                                                 # Test email voor login
-...    wachtwoord=test                                                                       # Test wachtwoord voor login
+...    email=tester@test.com                                                                # Test email voor login
+...    wachtwoord=test                                                                      # Test wachtwoord voor login
 
 # Verwachte teksten op de website (voor eenvoudiger onderhoud bij tekstaanpassingen)
 &{TEKST}
-...    HOMEPAGE_TITEL=TestRPG is a simple 'game'                                             # Hoofdpagina titel
-...    LOGIN_MODAL_TITEL=Login to TestRPG                                                    # Login modal titel
-...    LOGIN_EMAIL_FOUT=This should be an email address                                      # Email validatie foutmelding
-...    CHARACTER_CREATION_TITEL=Choose a name and build                                      # Character creation scherm titel
-...    CHARACTER_NAAM_FOUT=Name must be at least 3 characters                                # Character naam validatie foutmelding
-...    GAMEPLAY_INSTRUCTIE=Complete the tasks below and level up your character              # Gameplay instructie tekst
-...    LEVEL_UP_BERICHT=Great job! You levelled up                                           # Level up success message
-...    BESTAND_UPLOAD_SUCCES=File selected, level up!                                        # Bestand upload success message
-...    TEXT_INPUT_SUCCES=Dolar sit amet!                                                     # Lorem ipsum success message
-...    SLIDER_SUCCES=Slid to the next level!                                                 # Slider success message
-...    MAX_LEVEL_BERICHT=You've reached the highest level!                                   # Maximaal level bereikt message
+...    HOMEPAGE_TITEL=TestRPG is a simple 'game'                                            # Hoofdpagina titel
+...    LOGIN_MODAL_TITEL=Login to TestRPG                                                   # Login modal titel
+...    LOGIN_EMAIL_FOUT=This should be an email address                                     # Email validatie foutmelding
+...    CHARACTER_CREATION_TITEL=Choose a name and build                                     # Character creation scherm titel
+...    CHARACTER_NAAM_FOUT=Name must be at least 3 characters                               # Character naam validatie foutmelding
+...    GAMEPLAY_INSTRUCTIE=Complete the tasks below and level up your character             # Gameplay instructie tekst
+...    LEVEL_UP_BERICHT=Great job! You levelled up                                          # Level up success message
+...    BESTAND_UPLOAD_SUCCES=File selected, level up!                                       # Bestand upload success message
+...    TEXT_INPUT_SUCCES=Dolar sit amet!                                                    # Lorem ipsum success message
+...    SLIDER_SUCCES=Slid to the next level!                                                # Slider success message
+...    MAX_LEVEL_BERICHT=You've reached the highest level!                                  # Maximaal level bereikt message
 
 # Character level mapping voor keyword 'Controleer Character Level'
 &{LEVEL_MAPPING}
