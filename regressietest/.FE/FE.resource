@@ -147,6 +147,7 @@ Character Level Procedure
 
     ELSE IF    '${verwacht_level}' == '2'
         Level Up Via 5x Klikken    ${verwacht_level}
+        Controleer Of Tekst Op Pagina Staat    ${TEKST.LEVEL_UP_BERICHT}
         Controleren Van Character Status    ${verwacht_level}
 
     ELSE IF    '${verwacht_level}' == '3'
@@ -189,12 +190,6 @@ Level Up Via 5x Klikken
     Klik Op Element    ${SELECTORS.CLICK_TO_LEVEL_BUTTON}    4
     Controleer Of Tekst Op Pagina Staat    A level ${huidig_level} ${build}
     Klik Op Element    ${SELECTORS.CLICK_TO_LEVEL_BUTTON}
-
-    # Controleer of het verwachtte level is bereikt en check ook meteen of de afbeelding matcht
-    Controleer Of Tekst Op Pagina Staat    ${TEKST.LEVEL_UP_BERICHT}
-    Controleer Of Tekst Op Pagina Staat    A level ${verwacht_level} ${build}
-    Controleer Character Afbeelding    ${verwacht_level}
-    Log    Character geleveld van level ${huidig_level} naar ${verwacht_level} na 5x klikken
 
 Controleren Van Character Status
     [Documentation]    Controleert de naam, build en afbeelding van de character op basis van het level.
