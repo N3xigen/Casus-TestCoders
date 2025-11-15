@@ -1,11 +1,11 @@
 ENGLISH DESCRIPTION:
----
+--
 A simple Robot Framework Regressiontest I set up as a technical assignment for a job.
 I'm happy to say that I landed the job with this assignment.
 Initially I wanted to remove the repository again, but decided to keep it here for the one or two people who stumble upon it and might find it useful. I might also use it myself now and again. 
 Contains a complete frontend testsuite with four testcases, and an API testsuite with three testcases. Can be useful if you quickly want to find keywords that you can use for automation. 
 Some keywords are unique, others are more generic, to be used in other tests. 
----
+--
 
 
 # Testplan - TestRPG Regressietest
