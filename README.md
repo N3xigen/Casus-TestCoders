@@ -204,6 +204,5 @@ REST API endpoints worden getest op:
 ---
 
 **Datum**: 26 oktober 2025  
-**Auteur**: Tristan Weber
 
 
